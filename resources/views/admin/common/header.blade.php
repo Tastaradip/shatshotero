@@ -140,7 +140,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"><i class="fa fa-tags"></i> Products</a>
+                                <a href="{{route('admin.products.index')}}"><i class="fa fa-tags"></i> Products</a>
                                 <ul class="submenu">
                                     <li><a href="{{route('admin.products.index')}}">All</a></li>
                                     <li><a href="{{route('admin.products.create')}}">Create</a></li>
@@ -148,7 +148,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"><i class="fa fa-bars"></i> Categories</a>
+                                <a href="{{route('admin.categories.index')}}"><i class="fa fa-bars"></i> Categories</a>
                                 <ul class="submenu">
                                     <li><a href="{{route('admin.categories.index')}}">All</a></li>
                                     <li><a href="{{route('admin.categories.create')}}">Create</a></li>
@@ -160,7 +160,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="index.html"><i class="fa fa-bars"></i> Types</a>
+                                <a href="{{route('admin.types.index')}}"><i class="fa fa-bars"></i> Types</a>
                             </li>
 
                             <li class="has-submenu">

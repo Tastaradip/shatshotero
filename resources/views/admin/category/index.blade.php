@@ -45,7 +45,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php($id=0)
+                                        @php($id=1)
                                         @foreach($categories as $category)
                                         <tr>
                                             <th scope="row">{{$id++}}</th>

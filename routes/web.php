@@ -35,6 +35,7 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('categories', 'CategoryController');
 	Route::resource('products', 'ProductController');
+	Route::resource('/types', 'TypeController');
 });
 
 // Auth::routes();

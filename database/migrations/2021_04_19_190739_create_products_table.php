@@ -21,16 +21,14 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->json('sizes')->nullable();
-            $table->json('colors')->nullable();
+            $table->string('sizes')->nullable();
+            $table->string('colors')->nullable();
             $table->double('price', 8, 2);
             $table->double('prev_price', 8, 2)->nullable();
             $table->integer('stock');
             $table->boolean('featured')->default(0);
             $table->boolean('status')->default(1);
-
-            $table->foreign('category_id')->references('id')->on('categories')
-                  ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

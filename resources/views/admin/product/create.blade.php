@@ -1,5 +1,8 @@
 @extends('admin.common.master')
 @section('page-css')
+<!-- Tagsinput -->
+<link rel="stylesheet" type="text/css" href="{{asset('admin/css/tagsinput.css')}}">
+<!-- Dropify -->
 <link rel="stylesheet" type="text/css" href="{{asset('admin/plugins/dropify/dropify.min.css')}}">
 <!-- Summernote css -->
 <link href="{{asset('admin/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet" />
@@ -50,7 +53,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Category</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" required="required">
                                             @foreach($categories as $cat)
                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                             @endforeach
@@ -62,7 +65,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" name="type_id">
                                             @foreach($types as $type)
-                                            <option value="{{$type->id}}">{{$type->name}}</option>
+                                            <option value="{{$type->id}}">{{$type->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -80,9 +83,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Stock</label>
+                                    <label for="stock" class="col-sm-2 col-form-label">Stock</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="number" name="stock" id="number" required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="colors" class="col-sm-2 col-form-label">Colors</label>
+                                    <div class="col-sm-10">
+                                         <input type="text" data-role="tagsinput" name="colors" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="sizes" class="col-sm-2 col-form-label">Sizes</label>
+                                    <div class="col-sm-10">
+                                         <input type="text" data-role="tagsinput" name="sizes" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -122,13 +137,15 @@
             </div>
             <!-- end row -->
 
-        </div>
-        <!-- end container-fluid -->
+</div>
+<!-- end container-fluid -->
 @endsection
 @section('page-js')
+<!-- Tagsinput -->
+<script type="text/javascript" src="{{asset('admin/js/tagsinput.js')}}"></script>
 <!--Summernote js-->
-<script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
+<script type="text/javascript" src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script type="text/javascript">
     jQuery(document).ready(function() {
         $('.summernote').summernote({
             height: 200, // set editor height
@@ -138,12 +155,13 @@
         });
     });
 </script>
-
-<script src="{{asset('admin/plugins/dropify/dropify.min.js')}}" type="text/javascript"></script> 
-
+<!-- Dropify -->
+<script type="text/javascript" src="{{asset('admin/plugins/dropify/dropify.min.js')}}"></script> 
 <script type="text/javascript">
       $(document).ready(function() {
           $('.dropify').dropify();
       });   
 </script>
+
+
 @endsection

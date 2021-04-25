@@ -37,6 +37,7 @@ class ProductController extends Controller
         $data['route']     = $this->route;
 
         $data['products'] = Product::orderBy('id','ASC')->get();
+        $data['file_path_view']       =  $this->file_path_view;
         return view($this->view.'index', $data);
     }
 
@@ -51,7 +52,7 @@ class ProductController extends Controller
         $data['route']     = $this->route;
 
         $data['categories']  = Category::orderBy('id','ASC')->get();
-        $data['types'] = Type::orderBy('id','ASC')->get();
+        $data['types'] = Type::orderBy('id','ASC')->get(); 
         return view($this->view.'create', $data);
     }
 
@@ -62,15 +63,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $request->validate([
                 'category_id' => 'required',
                 'code' => 'required | string | unique:products,id',
                 'price' => 'required',
                 'stock' => 'required',
-                'image' => 'required'
             ]);
-        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'description', 'sizes', 'colors', 'price', 'prev_price', 'stock', 'featured', 'status']);
+        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'prev_price', 'stock', 'colors', 'sizes', 'featured', 'status']);
         $product = Product::create($input);  
 
         if($request->hasFile('image'))
@@ -115,7 +115,14 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $data['title']     = $this->title;
+        $data['route']     = $this->route;
+        $data['file_path_view']       =  $this->file_path_view;
+
+        $data['product']   = $product;
+        $data['categories']  = Category::orderBy('id','ASC')->get();
+        $data['types'] = Type::orderBy('id','ASC')->get(); 
+        return view($this->view.'edit', $data);
     }
 
     /**
@@ -127,7 +134,39 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+                'category_id' => 'required',
+                'code' => 'required | string | unique:products,id',
+                'price' => 'required',
+                'stock' => 'required',
+            ]);
+        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'prev_price', 'stock', 'colors', 'sizes', 'featured', 'status']);
+        $product->update($input);  
+
+        if($request->hasFile('image'))
+            {
+                if(Storage::exists($this->file_stored.$product->featuredImage())){
+                    Storage::delete($this->file_stored.$product->featuredImage()) ;
+                }
+                $uploadedFile = $request->file('image');
+                $imageName = Str::slug($product->code,'-').'_'.Carbon::now()->format('ddmmYhis').'.'.$uploadedFile->extension();
+                if (!is_dir($this->file_path)) 
+                {
+                    mkdir($this->file_path, 0777);
+                }
+                $uploadedFile->storeAs($this->file_stored, $imageName);
+                $product_image = $product->images->where('type', 'featured')->first() ;
+                $url = $imageName;
+
+                $product_image->update([
+                    'url' => $url,
+                ]);
+
+                $product->images()->save($product_image);  
+            }  
+
+        Toastr::success('Product updated successfully :)','Success');
+        return redirect()->route($this->route.'index');
     }
 
     /**
@@ -138,7 +177,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if(Storage::exists($this->file_stored.$product->featuredImage())){
+            Storage::delete($this->file_stored.$product->featuredImage()) ;
+        }
+        $product->delete();
+
+        Toastr::success('Product deleted successfully :)','Success');
+        return redirect()->back();
     }
 
     public function images(){

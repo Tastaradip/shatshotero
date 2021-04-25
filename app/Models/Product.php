@@ -12,5 +12,15 @@ class Product extends Model
     {
         return $this->morphMany('App\Models\Image', 'imageable');
     }
+
+    public function featuredImage()
+    {
+        $image = $this->images()->where('type', 'featured')->first();
+        if (!empty($image)) {
+            return $image->url;
+        }
+        return '';
+    }
+
     
 }
