@@ -12,3 +12,10 @@ Note: This is the file where you can add your custom styles to change the look o
 /* ----------------------------------------------------
 	You can put your custom css code here: 
 -------------------------------------------------------*/
+
+.product-img .single-prodcut-img{
+	height: 390px;
+} 
+.product-img .single-prodcut-img img{
+	height: 100%;
+}

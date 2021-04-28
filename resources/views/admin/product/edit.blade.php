@@ -83,6 +83,14 @@
                                         <input class="form-control" type="text" name="price" id="price" value="{{$product->price?$product->price:''}}" required="required">
                                     </div>
                                 </div>
+                                @if($product->prev_price != '')
+                                <div class="form-group row">
+                                    <label for="prev_price" class="col-sm-2 col-form-label">Previous Price (BDT)</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="prev_price" id="prev_price" value="{{$product->prev_price?$product->prev_price:''}}" required="required">
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="form-group row">
                                     <label for="stock" class="col-sm-2 col-form-label">Stock</label>
                                     <div class="col-sm-10">
@@ -92,13 +100,13 @@
                                 <div class="form-group row">
                                     <label for="colors" class="col-sm-2 col-form-label">Colors</label>
                                     <div class="col-sm-10">
-                                         <input type="text" data-role="tagsinput" name="colors" class="form-control">
+                                         <input type="text" data-role="tagsinput" name="colors" class="form-control" value="{{$product->colors?$product->colors:''}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="sizes" class="col-sm-2 col-form-label">Sizes</label>
                                     <div class="col-sm-10">
-                                         <input type="text" data-role="tagsinput" name="sizes" class="form-control">
+                                         <input type="text" data-role="tagsinput" name="sizes" class="form-control" value="{{$product->sizes?$product->sizes:''}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">

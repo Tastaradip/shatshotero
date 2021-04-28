@@ -12,7 +12,7 @@
 <script src="{{asset('admin/js/app.js')}}"></script>
 
 <!-- Toaster -->
-<script src="{{asset('backend/js/toastr.min.js')}}"></script>
+<script src="{{asset('admin/js/toastr.min.js')}}"></script>
 {!! Toastr::message() !!}
 <script type="text/javascript">
 	@if($errors->any())

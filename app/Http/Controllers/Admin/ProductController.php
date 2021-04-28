@@ -70,7 +70,7 @@ class ProductController extends Controller
                 'price' => 'required',
                 'stock' => 'required',
             ]);
-        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'prev_price', 'stock', 'colors', 'sizes', 'featured', 'status']);
+        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'stock', 'colors', 'sizes', 'featured', 'status']);
         $product = Product::create($input);  
 
         if($request->hasFile('image'))
@@ -104,7 +104,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $data['title']     = $this->title;
+        $data['route']     = $this->route;
+        $data['file_path_view']       =  $this->file_path_view;
+
+        $data['product']   = $product;
+        return view($this->view.'show', $data);
     }
 
     /**
@@ -140,7 +145,11 @@ class ProductController extends Controller
                 'price' => 'required',
                 'stock' => 'required',
             ]);
-        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'prev_price', 'stock', 'colors', 'sizes', 'featured', 'status']);
+        if($request->price != $product->price){
+            $old_price = $product->price;
+        }
+        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'stock', 'colors', 'sizes', 'featured', 'status']);
+        $input = $input + ['prev_price'=>$old_price];
         $product->update($input);  
 
         if($request->hasFile('image'))
@@ -186,11 +195,39 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function images(){
-        return view($this->view.'images');
+
+    public function images($id){
+        $data['product'] = Product::findOrFail($id);
+        $data['title']     = $this->title;
+        $data['route']     = $this->route;
+        $data['file_path_view']       =  $this->file_path_view;
+        return view($this->view.'images', $data);
     }
 
-    public function images_store(){
-        //
+
+    public function images_store($id, Request $request){
+
+        $product = Product::findOrFail($id);
+        if($request->hasFile('file'))
+            {
+                $uploadedFile = $request->file('file');
+                //$imageName = Str::slug($property->title,'-').'_'.Carbon::now()->format('ddmmYhis').'.'.$uploadedFile->extension();
+                $imageName = $uploadedFile->getClientOriginalName();
+                if (!is_dir($this->file_path)) 
+                {
+                    mkdir($this->file_path, 0777);
+                }
+                $uploadedFile->storeAs($this->file_stored, $imageName);
+                $url = $imageName;
+
+                $imageUpload = new Image([
+                    'url' => $url,
+                    'type'=> 'gallery',
+                ]);
+
+                $product->images()->save($imageUpload);  
+                return response()->json(['success'=>$imageName]);  
+            }    
     }
+    
 }

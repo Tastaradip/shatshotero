@@ -8,6 +8,6 @@
 <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet" type="text/css">
 
 <!-- toastr -->
-<link rel="stylesheet" href="{{asset('backend/css/toastr.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('admin/css/toastr.min.css')}}" type="text/css">
 
 

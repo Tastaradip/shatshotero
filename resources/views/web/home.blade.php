@@ -219,6 +219,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="total-new-arrival new-arrival-slider-active carsoule-btn row">
+                            @foreach($products as $product)
                             <div class="col-lg-3">
                                 <!-- single product start-->
                                 <div class="single-product">
@@ -227,9 +228,10 @@
                                             <div class="new">New</div>
                                         </div>
                                         <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/01.jpg"
-                                                    class="primary-image"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/02.jpg"
-                                                    class="secondary-image"> </a>
+                                            <a href="single-product.html"> <img alt="" src="{{ $file_path_view.$product->featuredImage() }}"
+                                                    class="primary-image"> <img alt="" src="{{ $file_path_view.$product->galleryImageFirst() }}"
+                                                    class="secondary-image"> 
+                                            </a>
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
                                             <ul>
@@ -257,6 +259,7 @@
                                 </div>
                                 <!-- single product end-->
                             </div>
+                            @endforeach
                             <div class="col-lg-3">
                                 <!-- single product start-->
                                 <div class="single-product">

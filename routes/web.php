@@ -35,6 +35,8 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('categories', 'CategoryController');
 	Route::resource('products', 'ProductController');
+	Route::get('/{id}/images', 'ProductController@images')->name('products.images');
+	Route::post('/{id}/images/store', 'ProductController@images_store')->name('products.images.store');
 	Route::resource('/types', 'TypeController');
 });
 
