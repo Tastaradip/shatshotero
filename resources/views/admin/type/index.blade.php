@@ -37,6 +37,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if(!empty($types))
                                         @php($id=1)
                                         @foreach($types as $type)
                                         <tr>
@@ -121,6 +122,7 @@
                                         </div>
                                         <!-- /.modal -->
                                         @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

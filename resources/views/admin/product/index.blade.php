@@ -30,7 +30,10 @@
                         <img class="card-img-top img-fluid" src="{{ $file_path_view.$product->featuredImage() }}" alt="image" style="height: 420px;">
                         <div class="card-body">
                             <h4 class="card-title font-16 mt-0">{{$product->code}} - {{$product->title}}</h4>
-                            <p class="card-text">{{\App\Models\Category::find($product->category_id)->name}}</p>
+                            @php($cat_id = \App\Models\Category::find($product->category_id))
+                            @if($cat_id != '')                           
+                            <p class="card-text">{{$cat_id->name}}</p>
+                            @endif
                             <a href="{{ route($route.'edit', [$product->id]) }}" class="btn btn-primary waves-effect waves-light" title="edit"><i class="fas fa-pencil-alt"></i></a>
                             <a href="{{ route($route.'show', [$product->id]) }}" class="btn btn-info waves-effect waves-light" title="view"><i class="fas fa-eye"></i></a>
                             <a href="{{ route($route.'images', [$product->id]) }}" class="btn btn-success waves-effect waves-light" title="images"><i class="fas fa-image"></i></a>

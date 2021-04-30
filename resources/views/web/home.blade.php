@@ -219,18 +219,19 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="total-new-arrival new-arrival-slider-active carsoule-btn row">
+                            @if(!empty($products))
                             @foreach($products as $product)
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <!-- single product start-->
                                 <div class="single-product">
                                     <div class="product-img">
                                         <div class="product-label">
-                                            <div class="new">New</div>
+                                            <div class="new">{{$product->code}}</div>
                                         </div>
                                         <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="{{ $file_path_view.$product->featuredImage() }}"
-                                                    class="primary-image"> <img alt="" src="{{ $file_path_view.$product->galleryImageFirst() }}"
-                                                    class="secondary-image"> 
+                                            <a href="{{route('web.products.show', [$product->id])}}"> 
+                                                <img alt="" src="{{ $file_path_view.$product->featuredImage() }}" class="primary-image"> 
+                                                @if($product->galleryImageFirst() != '')<img alt="" src="{{ $file_path_view.$product->galleryImageFirst() }}" class="secondary-image"> @endif
                                             </a>
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
@@ -248,11 +249,15 @@
                                         </div>
                                     </div>
                                     <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">Quisque fringilla</a>
+                                        <div class="prodcut-name"> <a href="single-product.html">{{$product->title}}</a>
+                                            @php($cat_id = \App\Models\Category::find($product->category_id))
+                                            @if($cat_id != '')                           
+                                            <span>{{$cat_id->name}}</span>
+                                            @endif
                                         </div>
                                         <div class="prodcut-ratting-price">
                                             <div class="prodcut-price">
-                                                <div class="new-price"> $220 </div>
+                                                <div class="new-price"> {{$product->price}} tk </div>
                                             </div>
                                         </div>
                                     </div>
@@ -260,163 +265,7 @@
                                 <!-- single product end-->
                             </div>
                             @endforeach
-                            <div class="col-lg-3">
-                                <!-- single product start-->
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/03.jpg"
-                                                    class="primary-image"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/04.jpg"
-                                                    class="secondary-image"> </a>
-                                        </div>
-                                        <div class="product-icon socile-icon-tooltip text-center">
-                                            <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
-                                                        data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">Quisque fringilla</a>
-                                        </div>
-                                        <div class="prodcut-ratting-price">
-                                            <div class="prodcut-price">
-                                                <div class="new-price"> $220 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- single product end-->
-                            </div>
-                            <div class="col-lg-3">
-                                <!-- single product start-->
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <div class="product-label">
-                                            <div class="new">Sale</div>
-                                        </div>
-                                        <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/02.jpg"
-                                                    class="primary-image"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/03.jpg"
-                                                    class="secondary-image"> </a>
-                                        </div>
-                                        <div class="product-icon socile-icon-tooltip text-center">
-                                            <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
-                                                        data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">Quisque fringilla</a>
-                                        </div>
-                                        <div class="prodcut-ratting-price">
-                                            <div class="prodcut-ratting">
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star-o"></i></a>
-                                            </div>
-                                            <div class="prodcut-price">
-                                                <div class="new-price"> $220 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- single product end-->
-                            </div>
-                            <div class="col-lg-3">
-                                <!-- single product start-->
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/04.jpg"
-                                                    class="primary-image"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/03.jpg"
-                                                    class="secondary-image"> </a>
-                                        </div>
-                                        <div class="product-icon socile-icon-tooltip text-center">
-                                            <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
-                                                        data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">Quisque fringilla</a>
-                                        </div>
-                                        <div class="prodcut-ratting-price">
-                                            <div class="prodcut-price">
-                                                <div class="new-price"> $220 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- single product end-->
-                            </div>
-                            <div class="col-lg-3">
-                                <!-- single product start-->
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <div class="single-prodcut-img  product-overlay pos-rltv">
-                                            <a href="single-product.html"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/05.jpg"
-                                                    class="primary-image"> <img alt="" src="https://demo.hasthemes.com/clothing-preview/clothing/images/product/06.jpg"
-                                                    class="secondary-image"> </a>
-                                        </div>
-                                        <div class="product-icon socile-icon-tooltip text-center">
-                                            <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
-                                                        data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">Quisque fringilla</a>
-                                        </div>
-                                        <div class="prodcut-ratting-price">
-                                            <div class="prodcut-ratting">
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star"></i></a>
-                                                <a href="#"><i class="fa fa-star-o"></i></a> </div>
-                                            <div class="prodcut-price">
-                                                <div class="new-price"> $220 </div>
-                                                <div class="old-price"> <del>$250</del> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- single product end-->
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

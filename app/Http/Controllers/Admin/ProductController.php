@@ -229,5 +229,17 @@ class ProductController extends Controller
                 return response()->json(['success'=>$imageName]);  
             }    
     }
+
+    public function images_destroy($id, Request $request)
+    {
+            $image = Image::where('id',$id)->first();
+            if(Storage::exists($this->file_stored.$image->url)){
+                Storage::delete($this->file_stored.$image->url) ;
+            }
+            Image::find($id)->delete();
+            return response()->json([
+                'success' =>  true
+            ]);
+    }
     
 }

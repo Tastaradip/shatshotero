@@ -26,13 +26,14 @@
                                 <div class="thumbnail-carousel">
                                     <ul class="nav">
                                        <li>
-                                        <a class="active" href="#view11" class="shadow-box" aria-controls="view11" data-toggle="tab"><img src="images/product/01.jpg" alt="" /></a></li>
+                                        <a class="active" href="#view1" class="shadow-box" aria-controls="view1" data-toggle="tab"><img src="{{ $file_path_view.$product->featuredImage() }}" alt="" /></a></li>
+                                        @if($product->galleryImages() != '')
+                                        @php($id=2)
+                                        @foreach($product->galleryImages() as $gallery_img)
                                        <li>
-                                        <a href="#view22" class="shadow-box" aria-controls="view22" data-toggle="tab"><img src="images/product/02.jpg" alt="" /></a></li>
-                                       <li>
-                                        <a href="#view33" class="shadow-box" aria-controls="view33" data-toggle="tab"><img src="images/product/03.jpg" alt="" /></a></li>
-                                       <li>
-                                        <a href="#view44" class="shadow-box" aria-controls="view44" data-toggle="tab"><img src="images/product/04.jpg" alt="" /></a></li>
+                                        <a href="#view{{$id++}}" class="shadow-box" aria-controls="view{{$id}}" data-toggle="tab"><img src="{{ $file_path_view.$gallery_img->url}}" alt="" /></a></li>
+                                        @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -41,26 +42,21 @@
                            <div class="social-tag">
                               <a href="#"><i class="zmdi zmdi-share"></i></a>
                            </div>
-                            <div role="tabpanel" class="tab-pane active" id="view11">
+                            <div role="tabpanel" class="tab-pane active" id="view1">
                                 <div class="product-img">
-                                    <a class="fancybox" data-fancybox-group="group" href="images/product/01.jpg"><img src="images/product/01.jpg" alt="Single portfolio" /></a>
+                                    <a class="fancybox" data-fancybox-group="group" href="images/product/01.jpg"><img src="{{ $file_path_view.$product->featuredImage() }}" alt="Single portfolio" /></a>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="view22">
-                                <div class="product-img">
-                                    <a class="fancybox" data-fancybox-group="group" href="images/product/02.jpg"><img src="images/product/02.jpg" alt="Single portfolio" /></a>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="view33">
-                                <div class="product-img">
-                                    <a class="fancybox" data-fancybox-group="group" href="images/product/03.jpg"><img src="images/product/03.jpg" alt="Single portfolio" /></a>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="view44">
-                                <div class="product-img">
-                                    <a class="fancybox" data-fancybox-group="group" href="images/product/04.jpg"><img src="images/product/04.jpg" alt="Single portfolio" /></a>
-                                </div>
-                            </div>
+                            @if($product->galleryImages() != '')
+                                @php($id=2)
+                                @foreach($product->galleryImages() as $gallery_img)
+                                    <div role="tabpanel" class="tab-pane" id="view{{$id++}}">
+                                        <div class="product-img">
+                                            <a class="fancybox" data-fancybox-group="group" href="images/product/02.jpg"><img src="{{ $file_path_view.$gallery_img->url}}" alt="Single portfolio" /></a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

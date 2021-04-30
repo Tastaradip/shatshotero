@@ -45,6 +45,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if(!empty($categories))
                                         @php($id=1)
                                         @foreach($categories as $category)
                                         <tr>
@@ -167,6 +168,7 @@
                                         </div>
                                         <!-- /.modal -->
                                         @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

@@ -44,8 +44,23 @@ class Product extends Model
         }
         else{
             return '';
+        }        
+    }
+
+    public function allImages()
+    {
+        $product_images = $this->images()->orderBy('id', 'ASC')->get();
+        $product_images_count = $this->images()->count();  
+        if(!empty($product_images_count)){
+            for($i=0; $i<$product_images_count; $i++){
+
+            $data['all_images'][$i] = $product_images[$i]->url;
         }
-        
+        return $data['all_images'];
+        }
+        else{
+            return '';
+        }
     }
 
     

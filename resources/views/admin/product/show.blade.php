@@ -28,7 +28,10 @@
 	                    	<div class="row">	                    		
 	                    		<div class="col-lg-6 col-md-6">
 	                    			<h3>{{$product->code}} - {{$product->title}}</h3>
-	                    			<h6><label>Category:</label> {{\App\Models\Category::find($product->category_id)->name}}</h6>
+	                    			@php($cat_id = \App\Models\Category::find($product->category_id))
+		                            @if($cat_id != '')                           
+		                            <h6><label>Category:</label>{{$cat_id->name}}</h6>
+		                            @endif
 			                    	<p>{!! $product->description !!}</p>
 			                    	<h6><label>Price:</label> {{$product->price}} @if($product->prev_price != '')(<label>Previous Price:</label> {{$product->prev_price}} )@endif</h6>
 			                    	<h6><label>Stock:</label> {{$product->stock}}</h6>
@@ -40,8 +43,16 @@
 	                    		<div class="col-lg-6 col-md-6">
 	                    			<h6>Featured Image</h6>
 	                    			<img class="img-fluid" src="{{ $file_path_view.$product->featuredImage() }}" alt="featured img">
-	                    			<h6>Gallery Images</h6>
-	                    			
+	                    			@if(!empty($product->galleryImages()))
+	                    			<h6 style="margin-top: 60px;">Gallery Images</h6>
+	                    			<div class="row">
+	                    			@foreach($product->galleryImages() as $gallery_img)
+	                    				<div class="col-md-6" style="margin-bottom:20px">
+            								<img class="img-fluid" src="{{ $file_path_view.$gallery_img->url}}" alt="gallery img">
+            							</div>
+        							@endforeach
+        							</div>
+        							@endif
 	                    		</div>
 	                    	</div>    	
 	                    </div>

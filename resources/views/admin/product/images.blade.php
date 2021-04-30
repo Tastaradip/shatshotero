@@ -37,6 +37,17 @@
             </div>
         </div>  
 
+        <div class="load-images row" style="margin-top: 100px;">   
+                @if(!empty($product->galleryImages()))
+                @foreach($product->galleryImages() as $gallery_img)           
+                    <div class="col-md-2">
+                        <img class="img-fluid" src="{{ $file_path_view.$gallery_img->url}}" alt="gallery img" style="width: 100%; height: 300px">
+                        <a href="{{route($route.'images.delete',['id'=>$gallery_img->id])}}" class="btn btn-danger" id="deleteRecord" data-id="{{ $gallery_img->id }}">Remove</a>
+                    </div>  
+                @endforeach 
+                @endif
+        </div>
+
 </div> 
 
 @endsection
@@ -70,5 +81,25 @@
             }
 
 		});
+
+
+        $("#deleteRecord").click(function(){
+            var id = $(this).attr("data-id");
+            var token = $("meta[name='csrf-token']").attr("content");
+
+            $.ajax(
+            {
+                url: "admin/products/"+id+"/images",
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    "id": id,
+                    "_token": token,
+                },
+                success: function (response){
+                    location.reload();
+                }
+            });
+        });
 </script>
 @endsection

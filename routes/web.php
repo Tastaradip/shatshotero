@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Web')->name('web.')->group(function () {
 	Route::get('/', 'HomeController@index')->name('index');
 });
-Route::namespace('Web')->name('web.products')->prefix('web/products')->group(function () {
+Route::namespace('Web')->name('web.products.')->prefix('web/products')->group(function () {
 	Route::get('/{id}', 'ProductController@show')->name('show');
 });
 
@@ -35,8 +35,9 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('categories', 'CategoryController');
 	Route::resource('products', 'ProductController');
-	Route::get('/{id}/images', 'ProductController@images')->name('products.images');
-	Route::post('/{id}/images/store', 'ProductController@images_store')->name('products.images.store');
+	Route::get('products/{id}/images', 'ProductController@images')->name('products.images');
+	Route::post('products/{id}/images/store', 'ProductController@images_store')->name('products.images.store');
+	Route::get('products/images/delete/{id}','ProductController@images_destroy')->name('products.images.delete');
 	Route::resource('/types', 'TypeController');
 });
 
