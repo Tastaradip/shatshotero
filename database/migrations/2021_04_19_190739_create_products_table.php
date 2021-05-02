@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
             $table->double('price', 8, 2);
             $table->double('prev_price', 8, 2)->nullable();
             $table->integer('stock');
+            $table->integer('sold')->default(0);
+            $table->boolean('discount')->default(0);
             $table->boolean('featured')->default(0);
             $table->boolean('status')->default(1);
             

@@ -39,6 +39,7 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
 	Route::post('products/{id}/images/store', 'ProductController@images_store')->name('products.images.store');
 	Route::get('products/images/delete/{id}','ProductController@images_destroy')->name('products.images.delete');
 	Route::resource('/types', 'TypeController');
+	Route::resource('sliders', 'SliderController');
 });
 
 // Auth::routes();

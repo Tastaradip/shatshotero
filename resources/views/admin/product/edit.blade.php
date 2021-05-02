@@ -94,7 +94,13 @@
                                 <div class="form-group row">
                                     <label for="stock" class="col-sm-2 col-form-label">Stock</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="number" name="stock" id="number" value="{{$product->stock?$product->stock:''}}" required="required">
+                                        <input class="form-control" type="number" name="stock" id="stock" value="{{$product->stock?$product->stock:''}}" required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="stock" class="col-sm-2 col-form-label">Sold</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="number" name="sold" id="sold" value="{{$product->sold?$product->sold:''}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -124,6 +130,15 @@
                                         <input type="radio" id="yes" name="featured" value="1" @if($product->featured=='1') selected="selected" @endif>
                                         <label for="yes">Yes</label>
                                         <input type="radio" id="no" name="featured" value="0" @if($product->featured=='0') selected="selected" @endif style="margin-left: 12px;">
+                                        <label for="no">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Discount</label>
+                                    <div class="col-sm-10" style="padding-top: 10px">
+                                        <input type="radio" id="yes" name="discount" value="1" @if($product->discount=='1') selected="selected" @endif>
+                                        <label for="yes">Yes</label>
+                                        <input type="radio" id="no" name="discount" value="0" @if($product->discount=='0') selected="selected" @endif style="margin-left: 12px;">
                                         <label for="no">No</label>
                                     </div>
                                 </div>

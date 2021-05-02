@@ -143,7 +143,7 @@
                                 <a href="{{route('admin.products.index')}}"><i class="fa fa-tags"></i> Products</a>
                                 <ul class="submenu">
                                     <li><a href="{{route('admin.products.index')}}">All</a></li>
-                                    <li><a href="{{route('admin.products.create')}}">Create</a></li>
+                                    <li><a href="{{route('admin.products.create')}}">Add</a></li>
                                 </ul>
                             </li>
 
@@ -151,7 +151,7 @@
                                 <a href="{{route('admin.categories.index')}}"><i class="fa fa-bars"></i> Categories</a>
                                 <ul class="submenu">
                                     <li><a href="{{route('admin.categories.index')}}">All</a></li>
-                                    <li><a href="{{route('admin.categories.create')}}">Create</a></li>
+                                    <li><a href="{{route('admin.categories.create')}}">Add</a></li>
                                 </ul>
                             </li>
 
@@ -175,10 +175,10 @@
 
 
                             <li class="has-submenu">
-                                <a href="#"><i class="fa fa-image"></i>Sliders </a>
+                                <a href="{{route('admin.sliders.index')}}"><i class="fa fa-image"></i>Sliders </a>
                                 <ul class="submenu">
-                                    <li><a href="charts-morris.html">All</a></li>
-                                    <li><a href="charts-chartist.html">Add</a></li>
+                                    <li><a href="{{route('admin.sliders.index')}}">All</a></li>
+                                    <li><a href="{{route('admin.sliders.create')}}">Add</a></li>
                                 </ul>
                             </li>
 

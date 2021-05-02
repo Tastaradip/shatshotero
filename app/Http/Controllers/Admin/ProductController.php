@@ -145,11 +145,13 @@ class ProductController extends Controller
                 'price' => 'required',
                 'stock' => 'required',
             ]);
+        
+        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'stock', 'colors', 'sizes', 'featured', 'status', 'discount', 'sold']);
         if($request->price != $product->price){
             $old_price = $product->price;
+            $input = $input + ['prev_price'=>$old_price];
         }
-        $input = $request->only(['category_id', 'type_id', 'code', 'title', 'price', 'stock', 'colors', 'sizes', 'featured', 'status']);
-        $input = $input + ['prev_price'=>$old_price];
+        
         $product->update($input);  
 
         if($request->hasFile('image'))

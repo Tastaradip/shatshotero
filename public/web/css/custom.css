@@ -19,3 +19,8 @@ Note: This is the file where you can add your custom styles to change the look o
 .product-img .single-prodcut-img img{
 	height: 100%;
 }
+
+.slider-area .slick-slide img {
+    width: 100%;
+    height: 660px;
+}
