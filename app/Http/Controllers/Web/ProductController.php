@@ -23,8 +23,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $data['product'] = Product::findOrFail($id);
-        $data['file_path_view']       =  $this->file_path_view;
+        $data['product'] = Product::findOrFail($id);      
+        $data['file_path_view'] =  $this->file_path_view;
         return view ($this->view.'.show', $data);
     }
 

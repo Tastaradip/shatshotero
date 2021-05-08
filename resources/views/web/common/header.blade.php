@@ -6,8 +6,8 @@
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="login-register-area">
                                 <ul>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Register</a></li>
+                                    <li><a href="{{route('web.customer.login')}}">Login</a></li>
+                                    <li><a href="{{route('web.customer.register')}}">Register</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -39,9 +39,12 @@
                                     </li>
                                     <li>
                                         <div class="header-cart">
-                                            <div class="cart-icon"> <a href="#">Cart<i class="zmdi zmdi-shopping-cart"></i></a>
-                                                <span>2</span> </div>
-                                            <div class="cart-content-wraper">
+                                            <div class="cart-icon"> <a href="{{route('web.cart.index')}}">Cart<i class="zmdi zmdi-shopping-cart"></i></a>
+                                                @if(Auth::guard('customer')->check())
+                                                <span>{{\Cart::session(Auth::guard('customer')->user()->id)->getContent()->count()}}</span>
+                                                @endif
+                                                 </div>
+                                           <!--  <div class="cart-content-wraper">
                                                 <div class="cart-single-wraper">
                                                     <div class="cart-img">
                                                         <a href="#"><img src="images/product/01.jpg" alt=""></a>
@@ -75,7 +78,7 @@
                                                     <div class="check-btn"> <a class="btn-def" href="checkout.html">Checkout</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </li>
                                 </ul>

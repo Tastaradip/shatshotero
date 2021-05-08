@@ -21,6 +21,21 @@ Route::namespace('Web')->name('web.products.')->prefix('web/products')->group(fu
 	Route::get('/{id}', 'ProductController@show')->name('show');
 });
 
+Route::namespace('Auth')->name('web.customer.')->prefix('customer')->group(function () {
+	Route::get('register', 'CustomerRegisterController@showRegisterForm')->name('register');
+	Route::post('store', 'CustomerRegisterController@create')->name('store');
+	Route::get('login', 'CustomerLoginController@showLoginForm')->name('login');
+	Route::post('login/submit', 'CustomerLoginController@login')->name('login.submit');
+	Route::get('logout', 'CustomerLoginController@logout')->name('logout');
+});
+
+Route::middleware(['auth:customer'])->namespace('Web')->name('web.cart.')->group(function (){
+	Route::get('/add-to-cart/{product}', 'CartController@addtocart')->name('item.add');
+	Route::get('/cart', 'CartController@index')->name('index');
+	Route::get('/remove-from-cart/{product}', 'CartController@removefromcart')->name('item.remove');
+	Route::get('/cart/{product}/update', 'CartController@update')->name('item.update');
+});
+
 
 /* Backend routes 
 ===============================================
@@ -31,7 +46,7 @@ Route::namespace('Auth')->name('admin.')->prefix('admin')->group(function () {
     Route::post('/login-check', 'LoginController@login')->name('login.check');
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
-Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth'])->namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('categories', 'CategoryController');
 	Route::resource('products', 'ProductController');

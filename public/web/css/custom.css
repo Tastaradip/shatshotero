@@ -24,3 +24,40 @@ Note: This is the file where you can add your custom styles to change the look o
     width: 100%;
     height: 660px;
 }
+
+
+button.btn-def {
+  background: transparent none repeat scroll 0 0;
+  border: 1px solid #333;
+  border-radius: 0;
+  box-shadow: none;
+  color: #333;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  letter-spacing: 1px;
+  line-height: 38px;
+  padding: 0 20px;
+  text-shadow: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  white-space: nowrap;
+}
+button.btn-def:hover,button.btn-def.btn-white:hover,button.btn-def.btn2:hover {
+  background: #cc3333 none repeat scroll 0 0;
+  border-color: #cc3333;
+  color:#f1f1f1
+}
+button.btn-def.btn-white {
+  border-color:#ccc;
+  color: #ccc;
+}
+button.btn-def.btn2 {
+  background: #333 none repeat scroll 0 0;
+  border: 1px solid #333;
+  color: #fff;
+  height: 35px;
+  line-height: 33px;
+  padding: 0 15px;
+}

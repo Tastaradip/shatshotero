@@ -1,7 +1,13 @@
 @extends('web.common.master')
 
 @section('content')
-
+        @if(Session::has('message'))
+            <div class="alert alert-{{ Session::get('message-type') }} alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button" style="line-height: 0.5">×</button>
+                <i class="glyphicon glyphicon-{{ Session::get('message-type') == 'success' ? 'ok' : 'remove'}}"></i> {{ Session::get('message') }}
+            </div>
+        @endif
+        
         <!--slider area start-->
         <div class="slider-area pos-rltv carosule-pagi cp-line">
             <div class="active-slider">
@@ -80,7 +86,7 @@
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
                                             <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
+                                                <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
                                                 <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
                                                             class="fa fa-heart-o"></i></a></li>
