@@ -11,20 +11,19 @@
                                 <li>
                                     <div class="contact-icon"> <i class="zmdi zmdi-pin-drop"></i> </div>
                                     <div class="contact-text">
-                                        <p>Address: Your address goes here</p>
+                                        <p>Address:</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="contact-icon"> <i class="zmdi zmdi-email-open"></i> </div>
                                     <div class="contact-text">
-                                        <p><span><a href="mailto://demo@example.com">demo@example.com</a></span> <span><a
-                                                    href="mailto://info@example.com">info@example.com</a></span></p>
+                                        <p><span><a href="mailto:nazneenhaque111@gmail.com">nazneenhaque111@gmail.com</a></span></p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="contact-icon"> <i class="zmdi zmdi-phone-paused"></i> </div>
                                     <div class="contact-text">
-                                        <p><a href="tel://01234567890">01234567890</a> <a href="tel://01234567890">01234567890</a></p>
+                                        <p><a href="tel://01234567890"></a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -83,11 +82,7 @@
                                         <h5>Social Network</h5>
                                     </div>
                                     <ul>
-                                        <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-google"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a href="https://www.facebook.com/7shotero"><i class="zmdi zmdi-facebook"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -227,4 +222,29 @@
                 <!-- END Modal -->
             </div>
         <!-- END QUICKVIEW PRODUCT -->
+
+        <!-- Messenger Chat Plugin Code  -->
+    <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v10.0'
+          });
+        };
+
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution="page_inbox"
+        page_id="124114609085908">
+      </div>
         

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Web')->name('web.')->group(function () {
 	Route::get('/', 'HomeController@index')->name('index');
+	Route::get('/about', 'HomeController@about')->name('about');
 });
 Route::namespace('Web')->name('web.products.')->prefix('web/products')->group(function () {
 	Route::get('/{id}', 'ProductController@show')->name('show');
@@ -34,6 +35,10 @@ Route::middleware(['auth:customer'])->namespace('Web')->name('web.cart.')->group
 	Route::get('/cart', 'CartController@index')->name('index');
 	Route::get('/remove-from-cart/{product}', 'CartController@removefromcart')->name('item.remove');
 	Route::get('/cart/{product}/update', 'CartController@update')->name('item.update');
+});
+
+Route::middleware(['auth:customer'])->namespace('Web')->name('web.order.')->group(function (){
+	Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 });
 
 

@@ -56,8 +56,8 @@
                                                 @elseif($category->role == 'child') Child Category 
                                                 @endif
                                             </td>
-                                            <td>@if($category->role != 'main') {{\App\Models\Category::find($category->mainid)->name}} @endif</td>
-                                            <td>@if($category->role == 'child') {{\App\Models\Category::find($category->subid)->name}} @endif</td>
+                                            <td>@if($category->role != 'main') @if($category->mainid != 0) {{\App\Models\Category::find($category->mainid)->name}} @endif @endif</td>
+                                            <td>@if($category->role == 'child') @if($category->subid != 0) {{\App\Models\Category::find($category->subid)->name}}@endif @endif</td>
                                             <td>@if($category->status=='1') Active @else Inactive @endif</td>
                                             <td>@if($category->featured=='1') Yes @else No @endif</td>
                                             <td>
@@ -100,6 +100,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-form-label">Main Category</label>
                                                                             <select class="form-control" name="mainid">
+                                                                                <option value="0"></option>
                                                                                 @foreach($main_categories as $main_cat)
                                                                                 <option value="{{$main_cat->id}}">{{$main_cat->name}}</option>
                                                                                 @endforeach
@@ -108,6 +109,7 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-form-label">Sub Category</label>
                                                                             <select class="form-control" name="subid">
+                                                                                <option value="0"></option>
                                                                                 @foreach($sub_categories as $sub_cat)
                                                                                 <option value="{{$sub_cat->id}}">{{$sub_cat->name}}</option>
                                                                                 @endforeach

@@ -15,3 +15,7 @@
     <script src="{{asset('web/js/plugins.js')}}"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="{{asset('web/js/main.js')}}"></script>
+
+   
+    
+   

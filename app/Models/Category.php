@@ -8,4 +8,5 @@ class Category extends Model
 {
     protected $fillable = ['name', 'mainid', 'subid', 'featured', 'status', 'role'];
 
+
 }

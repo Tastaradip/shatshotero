@@ -32,4 +32,10 @@ class HomeController extends Controller
         $data['slider_file_path_view'] =  $this->slider_file_path_view;
     	return view($this->view.'home', $data);
     }
+
+    public function about(){
+        return view($this->view.'page.about');
+    }
+
+
 }
