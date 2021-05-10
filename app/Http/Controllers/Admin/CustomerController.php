@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,20 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct () 
+    {
+        $this->title = 'Customers';
+        $this->route = 'admin.customers.';
+        $this->view  = 'admin.customer.';
+    }
+
     public function index()
     {
-        //
+        $data['title']     = $this->title;
+        $data['route']     = $this->route;
+        $data['customers'] = Customer::latest()->get();
+        return view($this->view.'index', $data);
     }
 
     /**

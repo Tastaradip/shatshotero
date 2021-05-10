@@ -18,7 +18,6 @@
                     <div class="slider-content pos-abs">
                         <h4>{{$slider->title}}</h4>
                         <h1 class="uppercase pos-rltv underline">{!! $slider->caption !!}</h1>
-                        <a href="#" class="btn-def btn-white">Shop Now</a>
                     </div>
                 </div>
                 @endforeach
@@ -88,10 +87,6 @@
                                             <ul>
                                                 <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
                                                 <li><a href="#" data-tooltip="Quick View" class="q-view"
                                                         data-toggle="modal" data-target=".modal"><i
                                                             class="fa fa-eye"></i></a></li>
@@ -99,7 +94,7 @@
                                         </div>
                                     </div>
                                     <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">{{$product->title}}</a>
+                                        <div class="prodcut-name"> <a href="{{route('web.products.show', [$product->id])}}">{{$product->title}}</a>
                                             @php($cat_id = \App\Models\Category::find($product->category_id))
                                             @if($cat_id != '')                           
                                             <span>{{$cat_id->name}}</span>
@@ -155,12 +150,8 @@
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
                                             <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
+                                                <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
                                                 <li><a href="#" data-tooltip="Quick View" class="q-view"
                                                         data-toggle="modal" data-target=".modal"><i
                                                             class="fa fa-eye"></i></a></li>
@@ -168,7 +159,7 @@
                                         </div>
                                     </div>
                                     <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">{{$product->title}}</a>
+                                        <div class="prodcut-name"> <a href="{{route('web.products.show', [$product->id])}}">{{$product->title}}</a>
                                             @php($cat_id = \App\Models\Category::find($product->category_id))
                                             @if($cat_id != '')                           
                                             <span>{{$cat_id->name}}</span>
@@ -223,12 +214,8 @@
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
                                             <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
+                                                <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
                                                 <li><a href="#" data-tooltip="Quick View" class="q-view"
                                                         data-toggle="modal" data-target=".modal"><i
                                                             class="fa fa-eye"></i></a></li>
@@ -236,7 +223,7 @@
                                         </div>
                                     </div>
                                     <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">{{$product->title}}</a>
+                                        <div class="prodcut-name"> <a href="{{route('web.products.show', [$product->id])}}">{{$product->title}}</a>
                                             @php($cat_id = \App\Models\Category::find($product->category_id))
                                             @if($cat_id != '')                           
                                             <span>{{$cat_id->name}}</span>
@@ -291,12 +278,8 @@
                                         </div>
                                         <div class="product-icon socile-icon-tooltip text-center">
                                             <ul>
-                                                <li><a href="#" data-tooltip="Add To Cart" class="add-cart"
+                                                <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Wishlist" class="w-list"><i
-                                                            class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#" data-tooltip="Compare" class="cpare"><i
-                                                            class="fa fa-refresh"></i></a></li>
                                                 <li><a href="#" data-tooltip="Quick View" class="q-view"
                                                         data-toggle="modal" data-target=".modal"><i
                                                             class="fa fa-eye"></i></a></li>
@@ -304,7 +287,7 @@
                                         </div>
                                     </div>
                                     <div class="product-text">
-                                        <div class="prodcut-name"> <a href="single-product.html">{{$product->title}}</a>
+                                        <div class="prodcut-name"> <a href="{{route('web.products.show', [$product->id])}}">{{$product->title}}</a>
                                             @php($cat_id = \App\Models\Category::find($product->category_id))
                                             @if($cat_id != '')                           
                                             <span>{{$cat_id->name}}</span>
@@ -334,6 +317,6 @@
 
 
 
-        @endsection
+@endsection
 
  

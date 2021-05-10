@@ -39,6 +39,7 @@ Route::middleware(['auth:customer'])->namespace('Web')->name('web.cart.')->group
 
 Route::middleware(['auth:customer'])->namespace('Web')->name('web.order.')->group(function (){
 	Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+	Route::post('/store','OrderController@store')->name('store');
 });
 
 
@@ -60,6 +61,10 @@ Route::middleware(['auth'])->namespace('Admin')->name('admin.')->prefix('admin')
 	Route::get('products/images/delete/{id}','ProductController@images_destroy')->name('products.images.delete');
 	Route::resource('/types', 'TypeController');
 	Route::resource('sliders', 'SliderController');
+	Route::resource('customers', 'CustomerController');
+	Route::get('/orders/index','OrderController@index')->name('orders.index');
+	Route::get('/orders/update/{order}','OrderController@update')->name('orders.update');
+	Route::get('/orders/show/{order}', 'OrderController@show')->name('orders.show');
 });
 
 // Auth::routes();

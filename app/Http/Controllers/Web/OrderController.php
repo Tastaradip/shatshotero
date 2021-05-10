@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -36,7 +37,26 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+                'customer_id' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'district' => 'required',
+                'country' => 'required',
+            ]);
+        $input = $request->only(['customer_id', 'phone', 'address', 'district', 'zipcode', 'country', 'status', 'price', 'quantity']);
+        $order = Order::create($input); 
+
+        $cartItems = \Cart::session(Auth::guard('customer')->user()->id)->getContent();
+        foreach($cartItems as $item){
+            $order->products()->attach($item->id, ['price'=> $item->price, 'quantity'=> $item->quantity]);
+        }
+
+        //empty cart
+        \Cart::session(Auth::guard('customer')->user()->id)->clear();
+
+        return redirect()->back()->with('message', 'Your Order has been submitted successfully. Thank you for your Order.')
+        ->with('message-type', 'success');
     }
 
     /**

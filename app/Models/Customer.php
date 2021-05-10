@@ -11,4 +11,9 @@ class Customer extends Authenticatable
 {
 	protected $guard = 'customer';
     protected $fillable = ['name', 'email', 'password'];
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 }

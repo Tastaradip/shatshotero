@@ -14,15 +14,7 @@
 
                     <div class="menu-extras topbar-custom navbar p-0">
 
-                        <!-- Search input -->
-                        <div class="search-wrap" id="search-wrap">
-                            <div class="search-bar">
-                                <input class="search-input" type="search" placeholder="Search" />
-                                <a href="#" class="close-search toggle-search" data-target="#search-wrap">
-                                    <i class="mdi mdi-close-circle"></i>
-                                </a>
-                            </div>
-                        </div>
+
 
                         <ul class="navbar-right ml-auto list-inline float-right mb-0">
 
@@ -33,55 +25,7 @@
                                 </a>
                             </li>
 
-                            <!-- notification -->
-                            <li class="dropdown notification-list list-inline-item">
-                                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="fas fa-bell noti-icon"></i>
-                                    <span class="badge badge-pill badge-danger noti-icon-badge">3</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
-                                    <!-- item-->
-                                    <h6 class="dropdown-item-text">
-                                            Notifications
-                                        </h6>
-                                    <div class="slimscroll notification-item-list">
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                            <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                                            <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                                        </a>
 
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-danger"><i class="mdi mdi-message-text-outline"></i></div>
-                                            <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-info"><i class="mdi mdi-filter-outline"></i></div>
-                                            <p class="notify-details"><b>Your item is shipped</b><span class="text-muted">It is a long established fact that a reader will</span></p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-success"><i class="mdi mdi-message-text-outline"></i></div>
-                                            <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-warning"><i class="mdi mdi-cart-outline"></i></div>
-                                            <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                                        </a>
-
-                                    </div>
-                                    <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item text-center notify-all text-primary">
-                                            View all <i class="fi-arrow-right"></i>
-                                        </a>
-                                </div>
-                            </li>
 
                             <li class="dropdown notification-list list-inline-item">
                                 <div class="dropdown notification-list nav-pro-img">
@@ -89,13 +33,7 @@
                                         <img src="assets/images/users/user-1.jpg" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
-                                        <!-- item-->
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-wallet"></i> My Wallet</a>
-                                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline"></i> Lock screen</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                        <a class="dropdown-item text-danger" href="{{route('admin.logout')}}"><i class="mdi mdi-power text-danger"></i> Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -156,7 +94,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="index.html"><i class="fa fa-users"></i> Customers</a>
+                                <a href="{{route('admin.customers.index')}}"><i class="fa fa-users"></i> Customers</a>
                             </li>
 
                             <li class="has-submenu">
@@ -166,7 +104,7 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="fa fa-shopping-cart"></i> Orders</a>
                                 <ul class="submenu">
-                                    <li><a href="advanced-alertify.html">All</a></li>
+                                    <li><a href="{{route('admin.orders.index')}}">All</a></li>
                                     <li><a href="advanced-rating.html">Completed</a></li>
                                     <li><a href="advanced-nestable.html">New</a></li>
                                     <li><a href="advanced-rangeslider.html">In Progress</a></li>
