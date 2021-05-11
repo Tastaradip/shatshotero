@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Video;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,9 @@ class ProductController extends Controller
         $this->file_path = storage_path('app/public/products');
         $this->file_stored = '/public/products/';
         $this->file_path_view = \Request::root().'/storage/products/';
+        $this->video_file_path = storage_path('app/public/videos');
+        $this->video_file_stored = '/public/videos/';
+        $this->video_file_path_view = \Request::root().'/storage/videos/';
     }
 
     public function index()
@@ -242,6 +246,55 @@ class ProductController extends Controller
             return response()->json([
                 'success' =>  true
             ]);
+    }
+
+    public function videos($id){
+        $data['product'] = Product::findOrFail($id);
+        $data['title']     = $this->title;
+        $data['route']     = $this->route;
+        $data['video_file_path_view']       =  $this->video_file_path_view;
+        return view($this->view.'videos', $data);
+    }
+
+    public function videos_store($id, Request $request){
+
+        $product = Product::findOrFail($id);
+        if($request->hasFile('file'))
+            {
+                $request->validate([
+                    'file' => 'required',
+                ]);
+                $uploadedFile = $request->file('file');
+                $videoName = Str::slug($product->code,'-').'_'.Carbon::now()->format('ddmmYhis').'.'.$uploadedFile->extension();
+
+                if (!is_dir($this->video_file_path)) 
+                {
+                    mkdir($this->video_file_path, 0777);
+                }
+                $uploadedFile->storeAs($this->video_file_stored, $videoName);
+                $url = $videoName;
+
+                $videoUpload = new Video([
+                    'url' => $url,
+                    'type'=> '1',
+                ]);
+
+                $product->videos()->save($videoUpload);  
+                Toastr::success('Video added successfully :)','Success');
+                
+            }   
+            return redirect()->back(); 
+    }
+
+    public function videos_destroy($id)
+    {
+            $video = Video::where('id',$id)->first();
+            if(Storage::exists($this->video_file_stored.$video->url)){
+                Storage::delete($this->video_file_stored.$video->url) ;
+            }
+            Video::find($id)->delete();
+            Toastr::success('Video deleted successfully :)','Success');
+            return redirect()->back(); 
     }
     
 }

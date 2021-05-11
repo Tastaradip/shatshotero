@@ -7,7 +7,7 @@
                     <!-- Logo-->
                     <div>
                         <a href="index.html" class="logo">
-                            <img src="assets/images/logo-dark.png" class="logo-lg" alt="" height="22">
+                            <img src="{{asset('admin/images/logo.jpg')}}" class="logo-lg" alt="" height="44">
                         </a>
                     </div>
                     <!-- End Logo-->
@@ -30,7 +30,7 @@
                             <li class="dropdown notification-list list-inline-item">
                                 <div class="dropdown notification-list nav-pro-img">
                                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                        <img src="assets/images/users/user-1.jpg" alt="user" class="rounded-circle">
+                                        <img src="{{asset('admin/images/users/user-1.jpg')}}" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                         <a class="dropdown-item text-danger" href="{{route('admin.logout')}}"><i class="mdi mdi-power text-danger"></i> Logout</a>

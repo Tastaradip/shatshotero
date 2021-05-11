@@ -134,7 +134,7 @@
         <!--footer bottom area end-->
         
 
-        @include('web.common.quickview')
+        
         
 
         <!-- Messenger Chat Plugin Code  -->

@@ -19,12 +19,14 @@ class ProductController extends Controller
         $this->file_path = storage_path('app/public/products');
         $this->file_stored = '/public/products/';
         $this->file_path_view = \Request::root().'/storage/products/';
+        $this->video_file_path_view = \Request::root().'/storage/videos/';
     }
 
     public function show($id)
     {
         $data['product'] = Product::findOrFail($id);      
         $data['file_path_view'] =  $this->file_path_view;
+        $data['video_file_path_view'] =  $this->video_file_path_view;
         return view ($this->view.'.show', $data);
     }
 

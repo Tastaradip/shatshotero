@@ -87,9 +87,9 @@
                                             <ul>
                                                 <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
+                                                <!-- <li><a href="javascript:void(0)" data-tooltip="Quick View" class="q-view"
+                                                        data-toggle="modal" data-target=".modal-{{$product->id}}"><i
+                                                            class="fa fa-eye"></i></a></li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -109,6 +109,7 @@
                                 </div>
                                 <!-- single product end-->
                             </div>
+                            <!-- @include('web.common.quickview') -->
                             @endforeach
                             @endif
                         </div>
@@ -152,9 +153,7 @@
                                             <ul>
                                                 <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
+                                            
                                             </ul>
                                         </div>
                                     </div>
@@ -216,9 +215,7 @@
                                             <ul>
                                                 <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
@@ -238,6 +235,7 @@
                                 </div>
                                 <!-- single product end-->
                             </div>
+
                             @endforeach
                         </div>
                     </div>
@@ -280,9 +278,7 @@
                                             <ul>
                                                 <li><a href="{{route('web.cart.item.add', [$product->id])}}" data-tooltip="Add To Cart" class="add-cart"
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
-                                                <li><a href="#" data-tooltip="Quick View" class="q-view"
-                                                        data-toggle="modal" data-target=".modal"><i
-                                                            class="fa fa-eye"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                     </div>

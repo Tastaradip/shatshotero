@@ -37,6 +37,7 @@
                             <a href="{{ route($route.'edit', [$product->id]) }}" class="btn btn-primary waves-effect waves-light" title="edit"><i class="fas fa-pencil-alt"></i></a>
                             <a href="{{ route($route.'show', [$product->id]) }}" class="btn btn-info waves-effect waves-light" title="view"><i class="fas fa-eye"></i></a>
                             <a href="{{ route($route.'images', [$product->id]) }}" class="btn btn-success waves-effect waves-light" title="images"><i class="fas fa-image"></i></a>
+                            <a href="{{ route($route.'videos', [$product->id]) }}" class="btn btn-warning waves-effect waves-light" title="videos"><i class="fas fa-video"></i></a>
                             <a href="javascript:void(0)" class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target="#ProductDeleteModal-{{$product->id}}" title="delete"><i class="fas fa-trash"></i></a>
                         </div>
                     </div>

@@ -13,6 +13,11 @@ class Product extends Model
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 
+    public function videos()
+    {
+        return $this->morphMany('App\Models\Video', 'videoable');
+    }
+
     public function featuredImage()
     {
         $image = $this->images()->where('type', 'featured')->first();
@@ -62,6 +67,7 @@ class Product extends Model
             return '';
         }
     }
+
 
     
 }

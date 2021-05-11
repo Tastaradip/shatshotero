@@ -59,6 +59,9 @@ Route::middleware(['auth'])->namespace('Admin')->name('admin.')->prefix('admin')
 	Route::get('products/{id}/images', 'ProductController@images')->name('products.images');
 	Route::post('products/{id}/images/store', 'ProductController@images_store')->name('products.images.store');
 	Route::get('products/images/delete/{id}','ProductController@images_destroy')->name('products.images.delete');
+	Route::get('products/{id}/videos', 'ProductController@videos')->name('products.videos');
+	Route::post('products/{id}/videos/store', 'ProductController@videos_store')->name('products.videos.store');
+	Route::post('products/videos/delete/{id}','ProductController@videos_destroy')->name('products.videos.delete');
 	Route::resource('/types', 'TypeController');
 	Route::resource('sliders', 'SliderController');
 	Route::resource('customers', 'CustomerController');
