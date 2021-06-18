@@ -89,7 +89,8 @@
                                                         data-placement="left"><i class="fa fa-cart-plus"></i></a></li>
                                                 <!-- <li><a href="javascript:void(0)" data-tooltip="Quick View" class="q-view"
                                                         data-toggle="modal" data-target=".modal-{{$product->id}}"><i
-                                                            class="fa fa-eye"></i></a></li> -->
+                                                            class="fa fa-eye"></i></a>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -109,7 +110,6 @@
                                 </div>
                                 <!-- single product end-->
                             </div>
-                            <!-- @include('web.common.quickview') -->
                             @endforeach
                             @endif
                         </div>

@@ -27,12 +27,12 @@ class ProductController extends Controller
         $this->title = 'Products';
         $this->route = 'admin.products.';
         $this->view  = 'admin.product.';
-        $this->file_path = storage_path('app/public/products');
-        $this->file_stored = '/public/products/';
-        $this->file_path_view = \Request::root().'/storage/products/';
-        $this->video_file_path = storage_path('app/public/videos');
-        $this->video_file_stored = '/public/videos/';
-        $this->video_file_path_view = \Request::root().'/storage/videos/';
+        $this->file_path = storage_path('app/public/files/products');
+        $this->file_stored = '/files/products/';
+        $this->file_path_view = \Request::root().'/storage/files/products/';
+        $this->video_file_path = storage_path('app/public/files/videos');
+        $this->video_file_stored = '/files/videos/';
+        $this->video_file_path_view = \Request::root().'/storage/files/videos/';
     }
 
     public function index()

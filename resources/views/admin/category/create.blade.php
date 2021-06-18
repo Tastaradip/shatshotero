@@ -39,14 +39,15 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Role</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="role" required="required">
+                                        <select class="form-control" name="role" id="role" required="required">
+                                            <option>Select</option>
                                             <option value="main">Main Category</option>
                                             <option value="sub">Sub Category</option>
                                             <option value="child">Child Category</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" id="main" style="display:none">
                                     <label class="col-sm-2 col-form-label">Main Category</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="mainid">
@@ -56,7 +57,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" id="sub" style="display: none">
                                     <label class="col-sm-2 col-form-label">Sub Category</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="subid">
@@ -101,3 +102,25 @@
         <!-- end container-fluid -->
 @endsection
 
+
+@section('page-js')
+<script>
+$('#role').on('change',function(){
+     var selection = $(this).val();
+    switch(selection){
+        case "main":
+            $("#main").hide();
+            $("#sub").hide();
+            break;
+        case "sub":
+            $("#main").show();
+            $("#sub").hide();
+            break;
+        case "child":
+            $("#main").show();
+            $("#sub").show(); 
+            break;
+    }
+});
+</script>
+@endsection
